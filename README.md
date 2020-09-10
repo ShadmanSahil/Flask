@@ -1,1 +1,1 @@
-INCLUDES ALL THE PROJECTS I DID USING FLASK AS THE BACKEND 
+# Includes some of the projects I did using Flask as the backend
