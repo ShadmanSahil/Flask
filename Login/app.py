@@ -21,6 +21,10 @@ users.append(User(id=3, username='Carlos', password='somethingsimple'))
 def login():
     return render_template('login.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 
