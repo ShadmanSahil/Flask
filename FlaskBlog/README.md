@@ -5,4 +5,4 @@ FLASKBLOG IS A BASIC BLOG APPLICATION THAT ALLOWS USERS TO:
  - VIEW OTHER USER'S POSTS
  - POST BLOGS 
  
-I used this project to get started with the FLask python microframework.
+This was my first big project using Flask
