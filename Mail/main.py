@@ -157,7 +157,10 @@ def sent():
 @app.route('/edit/<id>', methods=['GET','POST'])
 @login_required
 def edit(id):
-    pass
+    if request.method=='GET':
+        id=int(id)
+        mail=New.query.filter_by(id=id).first()
+        return render_template('edit.html', mail=mail)
 
 if __name__=='__main__':
     app.run(debug=True)
