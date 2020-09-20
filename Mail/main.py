@@ -97,6 +97,12 @@ def logout():
     flash('You have logged out!')
     return redirect(url_for('login'))
 
+@app.route('/')
+@login_required
+def index():
+    pass
+
+
 
 if __name__=='__main__':
     app.run(debug=True)
