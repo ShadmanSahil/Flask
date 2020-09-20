@@ -56,20 +56,22 @@ class User(db.Model, UserMixin):
     username=db.Column(db.String(20), nullable=False)
     email=db.Column(db.String(30), nullable=False, unique=True)
     password=db.Column(db.String(20), nullable=False)
+    mails = db.relationship('New', backref='author', lazy=True)
 
     def __repr__(self):
         return "User({}, {}, {})".format(self.username, self.email, self.id)
 
 class New(db.Model):
-id=db.Column(db.Integer(), primary_key=True)
-sender=db.Column(db.String(20), nullable=False)
-receiver=db.Column(db.String(20), nullable=False)
-subject=db.Column(db.String(20))
-content=db.Column(db.String(5000), nullable=False)
+    id=db.Column(db.Integer(), primary_key=True)
+    sender=db.Column(db.String(20), nullable=False)
+    receiver=db.Column(db.String(20), nullable=False)
+    subject=db.Column(db.String(20))
+    content=db.Column(db.String(5000), nullable=False)
+    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=False)
 
-def __repr__(self):
-    return "email {}(to {}, subject {}. {})".format(self.id, self.receiver, self.subject, self.content)
-    
+    def __repr__(self):
+        return "email {}(to {}, subject {}. {})".format(self.id, self.receiver, self.subject, self.content)
+
 #routes
 
 @app.route('/register', methods=['GET','POST'])
