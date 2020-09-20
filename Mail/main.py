@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired, EqualTo, Email
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
+from flask_mail import Mail, Message
 
 
 #configs 
@@ -23,6 +24,10 @@ login_manager.login_view = 'login'
 def User(user_id):
     return User.query.get(user_id)
 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+mail=Mail(app)
 
 #forms
 
