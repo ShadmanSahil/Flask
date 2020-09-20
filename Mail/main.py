@@ -2,8 +2,15 @@ from flask import Flask
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email
+from flask_sqlalchemy import SQLAlchemy
 
 app=Flask(__name__)
+
+db=SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
+
+
+#forms
 
 class RegisterForm(FlaskForm):
     username=StringField('Username', validators=[DataRequired(message='This cannot be empty')])
@@ -16,6 +23,9 @@ class LoginForm(FlaskForm):
     email=StringField('Email', validators=[DataRequired(message='This cannot be empty'), Email(message='Enter a valid email')])
     password=PasswordField('Password', validators=[DataRequired(message='This cannot be empty')])
     submit=SubmitField('Login')
+
+    
+#routes
 
 @app.route('/register', methods=['GET','POST'])
 def register():
