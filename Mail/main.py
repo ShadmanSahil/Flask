@@ -30,6 +30,18 @@ class LoginForm(FlaskForm):
     password=PasswordField('Password', validators=[DataRequired(message='This cannot be empty')])
     submit=SubmitField('Login')
 
+
+#models
+
+class User(db.Model):
+    id=db.Column(db.Integer(), primary_key=True)
+    username=db.Column(db.String(20), nullable=False)
+    email=db.Column(db.String(30), nullable=False, unique=True)
+    password=db.Column(db.String(20), nullable=False)
+
+    def __repr__(self):
+        return "User({}, {}, {})".format(self.username, self.email, self.id)
+
     
 #routes
 
