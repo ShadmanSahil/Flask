@@ -21,7 +21,7 @@
     </nav>
     <ul>
       {% for mail in mails %}
-      <div class='alert alert-{{ category }}'><h2>{{ mail.subject }}</h2>{{ mail.content }}</div><br>
+      <div class='alert alert-{{ category }}'><h2><a href="/edit/{{mail.id}}">{{ mail.subject }}</a></h2>{{ mail.content }}</div><br>
       {% endfor %}
     </ul>
   </body>
