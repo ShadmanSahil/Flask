@@ -110,7 +110,9 @@ def index():
 @app.route('/compose', methods=['GET', 'POST'])
 @login_required
 def compose():
-    pass
+    form=ComposeForm()
+    if request.method=='GET':
+        return render_template('compose.html', form=form)
 
 
 if __name__=='__main__':
