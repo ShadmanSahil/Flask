@@ -11,6 +11,11 @@ class RegisterForm(FlaskForm):
     password=PasswordField('Password', validators=[DataRequired(message='This cannot be empty')])
     confirm=PasswordField('Confirm Password', validators=[DataRequired(message='This cannot be empty'), EqualTo(password, message='Passwords do not match')])
     submit=SubmitField('Register')
+    
+class LoginForm(FlaskForm):
+    email=StringField('Email', validators=[DataRequired(message='This cannot be empty'), Email(message='Enter a valid email')])
+    password=PasswordField('Password', validators=[DataRequired(message='This cannot be empty')])
+    submit=SubmitField('Login')
 
 @app.route('/register', methods=['GET','POST'])
 def register():
