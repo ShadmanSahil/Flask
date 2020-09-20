@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Emails</title>
+  </head>
+  <body>
+    <nav>
+      <a>Home</a>
+      <a>Logout</a>
+      <a>Compose</a>
+    </nav>
+    <ul>
+      {% for mail in mails %}
+      <div class='alert alert-{{ category }}'><h2>{{ mail.subject }}</h2>{{ mail.content }}</div><br>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
