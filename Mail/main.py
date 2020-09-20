@@ -52,6 +52,11 @@ def register():
         return render_template('register.html', form=form)
     email=form.email.data
     password=bcrypt.generate_password_hash(form.password.data)
+    user=User(username=form.username.data, email=email, password=password)
+    db.session.add(user)
+    db.session.commit()
+    flash('You have successfully registered!', 'success')
+    return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET','POST'])
 def login():
