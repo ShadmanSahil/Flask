@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, UserMixin
+from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 
 
 #configs 
@@ -89,7 +89,12 @@ def login():
             return render_template('login.html', form=form)
     flash('No user under this email. Please register.')
     return redirect(url_for('register'))
-       
+
+@app.route('/logout')
+@login_required
+def logout():
+    pass
+
 
 if __name__=='__main__':
     app.run(debug=True)
