@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email
@@ -93,7 +93,9 @@ def login():
 @app.route('/logout')
 @login_required
 def logout():
-    pass
+    logout_user()
+    flash('You have logged out!')
+    return redirect(url_for('login'))
 
 
 if __name__=='__main__':
