@@ -13,6 +13,7 @@ from flask_mail import Mail, Message
 app=Flask(__name__)
 
 db=SQLAlchemy(app)
+app.config['SECRET_KEY']='yoursecretkey'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
 
 bcrypt=Bcrypt(app)
