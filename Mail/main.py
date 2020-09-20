@@ -161,6 +161,13 @@ def edit(id):
         id=int(id)
         mail=New.query.filter_by(id=id).first()
         return render_template('edit.html', mail=mail)
+    mail=New.query.filter_by(id=id).first()
+    trash=Trash(sender=current_user.id, receiver=mail.receiver, subject=mail.subject, content=mail.content, user_id=current_user.id)
+    db.session.delete(mail)
+    db.session.add(trash)
+    db.session.commit()
+    flash('Email deleted')
+    return redirect(url_for('sent'))
 
 if __name__=='__main__':
     app.run(debug=True)
