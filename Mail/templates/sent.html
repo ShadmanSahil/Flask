@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Emails</title>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul>
+      {% for category,message in messages %}
+      <div class='alert alert-{{ category }}'>{{ message }}</div>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
   </head>
   <body>
     <nav>
