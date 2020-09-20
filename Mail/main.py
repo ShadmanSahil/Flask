@@ -51,12 +51,16 @@ def register():
     if request.method=='GET':
         return render_template('register.html', form=form)
     email=form.email.data
-    password=bcrypt.generate_password_hash(form.password.data)
-    user=User(username=form.username.data, email=email, password=password)
-    db.session.add(user)
-    db.session.commit()
-    flash('You have successfully registered!', 'success')
-    return redirect(url_for('login'))
+    check=User.query.filter_by(email=email).first()
+    if not check:
+        password=bcrypt.generate_password_hash(form.password.data)
+        user=User(username=form.username.data, email=email, password=password)
+        db.session.add(user)
+        db.session.commit()
+        flash('You have successfully registered!', 'success')
+        return redirect(url_for('login'))
+    flash('This email has already been taken')
+    return render_template('register.html', form=form)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
