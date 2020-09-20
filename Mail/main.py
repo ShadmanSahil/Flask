@@ -100,7 +100,7 @@ def logout():
 @app.route('/')
 @login_required
 def index():
-    pass
+    return render_template('index.html')
 
 
 
