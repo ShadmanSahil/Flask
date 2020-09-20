@@ -146,6 +146,10 @@ def compose():
     flash('Email has been sent!')
     return redirect(url_for('index'))
 
+@app.route('/sent')
+@login_required
+def sent():
+    pass
 
 
 if __name__=='__main__':
