@@ -135,9 +135,16 @@ def compose():
     sender=current_user.email
     subject=form.subject.data
     content=form.content.data
-
+    
     msg=Message(subject=subject, sender=sender, recipients=to.split(), body=content)
     mail.send(msg)
+    
+    new=New(receiver=to,sender=sender,subject=subject,content=content, user_id=current_user.id)
+    db.session.add(new)
+    db.session.commit()
+
+    flash('Email has been sent!')
+    return redirect(url_for('index'))
 
 
 
