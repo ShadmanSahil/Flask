@@ -80,6 +80,15 @@ def login():
     if user:
         password=form.password.data
         check=bcrypt.check_password_hash(user.password, password)
+        if check:
+            flash('You have successfully logged in!')
+            login_user(user)
+            return redirect(url_for('index'))
+        else:
+            flash('Incorrect password')
+            return render_template('login.html', form=form)
+    flash('No user under this email. Please register.')
+    return redirect(url_for('register'))
        
 
 if __name__=='__main__':
