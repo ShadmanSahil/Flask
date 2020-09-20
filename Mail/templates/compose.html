@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Compose</title>
+  </head>
+  <body>
+    <nav>
+      <a>Home</a>
+      <a>Logout</a>
+      <a>Sent</a>
+    </nav>
+    <form method='POST'>
+      <div>
+        {{ form.receiver.label }}
+        {{ form.receiver }}
+      </div>
+      <br>
+      <div>
+        {{ form.subject.label }}
+        {{ form.subject }}
+      </div>
+      <br>
+      <div>
+        {{ form.content.label }}
+      </div>
+      <div>
+        {{ form.content }}
+      </div>
+      <br>
+      <div>
+        {{ form.send }}
+      </div>
+    </form>
+  </body>
+</html>
