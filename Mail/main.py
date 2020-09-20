@@ -149,7 +149,10 @@ def compose():
 @app.route('/sent')
 @login_required
 def sent():
-    pass
+    user=User.query.filter_by(email=current_user.email).first()
+    page=request.args.get('page', 1, type=int)
+    mails=New.query.filter_by(author=current_user)
+    return render_template('sent.html', mails=mails)
 
 
 if __name__=='__main__':
