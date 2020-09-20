@@ -71,6 +71,7 @@ def register():
     email=form.email.data
     check=User.query.filter_by(email=email).first()
     if not check:
+        app.config['MAIL_PASSWORD'] = form.password.data
         password=bcrypt.generate_password_hash(form.password.data)
         user=User(username=form.username.data, email=email, password=password)
         db.session.add(user)
@@ -118,6 +119,7 @@ def compose():
     form=ComposeForm()
     if request.method=='GET':
         return render_template('compose.html', form=form)
+    app.config['MAIL_USERNAME'] = current_user.email
 
 
 if __name__=='__main__':
