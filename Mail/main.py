@@ -154,6 +154,10 @@ def sent():
     mails=New.query.filter_by(author=current_user)
     return render_template('sent.html', mails=mails)
 
+@app.route('/edit/<id>', methods=['GET','POST'])
+@login_required
+def edit(id):
+    pass
 
 if __name__=='__main__':
     app.run(debug=True)
