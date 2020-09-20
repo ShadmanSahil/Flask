@@ -5,5 +5,22 @@
     <title>Login</title>
   </head>
   <body>
+    <form method='POST'>
+      <div>
+        {{ form.email.label}}
+      </div>
+      <div>
+        {{ form.email }}
+      </div>
+      <div>
+        {{ form.password.label }}
+      </div>
+      <div>
+        {{ form.password }}
+      </div>
+      <div>
+        {{ form.submit }}
+      </div>
+    </form>
   </body>
 </html>
