@@ -38,6 +38,11 @@ class LoginForm(FlaskForm):
     password=PasswordField('Password', validators=[DataRequired(message='This cannot be empty')])
     submit=SubmitField('Login')
 
+class ComposeForm(FlaskForm):
+    receiver=StringField('To:', validators=[DataRequired(message='This cannot be empty')])
+    subject=StringField('Subject:')
+    content=TextAreaField('Content:', validators=[DataRequired(message='This cannot be empty')])
+    send=SubmitField('Send')
 
 #models
 
