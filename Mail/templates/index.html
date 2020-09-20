@@ -16,16 +16,16 @@
   <body>
     <h1>What do you want to do?</h1>
     <div>
-      <h2><a>Compose an email</a></h2>
+      <h2><a href="{{ url_for('compose')}}">Compose an email</a></h2>
     </div>
     <div>
-      <h2><a">View sent emails</a></h2>
+      <h2><a href="{{ url_for('sent')}}">View sent emails</a></h2>
     </div>
     <div>
-      <h2><a>View recently deleted emails</a></h2>
+      <h2><a href="#">View recently deleted emails</a></h2>
     </div>
     <div>
-      <h2><a>Logout</a></h2>
+      <h2><a href="{{ url_for('logout')}}">Logout</a></h2>
     </div>
 
   </body>
