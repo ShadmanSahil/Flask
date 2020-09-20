@@ -15,10 +15,10 @@
   </head>
   <body>
     <nav>
-      <a>Home</a>
-      <a>Logout</a>
-      <a>Compose</a>
-      <a>Sent</a>
+      <a href="{{url_for('index')}}">Home</a>
+      <a href="{{url_for('logout')}}">Logout</a>
+      <a href="{{url_for('compose')}}">Compose</a>
+      <a href="{{url_for('sent')}}">Sent</a>
     </nav>
     <div>
       <h2>ID: {{mail.id}}</h2>
