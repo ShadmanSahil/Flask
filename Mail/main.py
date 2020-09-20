@@ -120,6 +120,14 @@ def compose():
     if request.method=='GET':
         return render_template('compose.html', form=form)
     app.config['MAIL_USERNAME'] = current_user.email
+    to=form.receiver.data
+    sender=current_user.email
+    subject=form.subject.data
+    content=form.content.data
+
+    msg=Message(subject=subject, sender=sender, recipients=to.split(), body=content)
+    mail.send(msg)
+
 
 
 if __name__=='__main__':
