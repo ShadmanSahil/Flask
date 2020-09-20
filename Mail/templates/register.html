@@ -5,5 +5,34 @@
     <title>Register</title>
   </head>
   <body>
+    <form method='POST'>
+      <div>
+        {{ form.username.label }}
+      </div>
+      <div>
+        {{ form.username }}
+      </div>
+      <div>
+        {{ form.email.label}}
+      </div>
+      <div>
+        {{ form.email }}
+      </div>
+      <div>
+        {{ form.password.label }}
+      </div>
+      <div>
+        {{ form.password }}
+      </div>
+      <div>
+        {{ form.confirm.label }}
+      </div>
+      <div>
+        {{ form.confirm }}
+      </div>
+      <div>
+        {{ form.submit }}
+      </div>
+    </form>
   </body>
 </html>
