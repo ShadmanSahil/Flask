@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email
@@ -35,7 +35,9 @@ class LoginForm(FlaskForm):
 
 @app.route('/register', methods=['GET','POST'])
 def register():
-    pass
+    form=RegisterForm()
+    if request.method=='GET':
+        return render_template('register.html', form=form)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
