@@ -107,6 +107,10 @@ def logout():
 def index():
     return render_template('index.html')
 
+@app.route('/compose', methods=['GET', 'POST'])
+@login_required
+def compose():
+    pass
 
 
 if __name__=='__main__':
