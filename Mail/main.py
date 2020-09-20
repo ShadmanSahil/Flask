@@ -69,6 +69,9 @@ def login():
         return render_template('login.html', form=form)
     email=form.email.data
     user=User.query.filter_by(email=email).first()
+    if user:
+        password=form.password.data
+        check=bcrypt.check_password_hash(user.password, password)
 
 if __name__=='__main__':
     app.run(debug=True)
