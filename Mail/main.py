@@ -50,6 +50,8 @@ def register():
     form=RegisterForm()
     if request.method=='GET':
         return render_template('register.html', form=form)
+    email=form.email.data
+    password=bcrypt.generate_password_hash(form.password.data)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
