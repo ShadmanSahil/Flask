@@ -67,6 +67,8 @@ def login():
     form=LoginForm()
     if request.method=='GET':
         return render_template('login.html', form=form)
+    email=form.email.data
+    user=User.query.filter_by(email=email).first()
 
 if __name__=='__main__':
     app.run(debug=True)
